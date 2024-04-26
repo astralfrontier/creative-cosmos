@@ -3,13 +3,35 @@ import path from "node:path";
 import ogs from "open-graph-scraper";
 import { prompt } from "enquirer";
 import yaml from "yaml";
-import { pathOr, pluck } from "ramda";
+import { assoc, pathOr, pluck, reduce } from "ramda";
 import slugify from "slugify";
 
+interface Tag {
+  name: string;
+  desc?: string;
+  parents?: string[];
+  img?: string;
+}
+
 const tagDictionaryPath = path.join(__dirname, "tags.yaml");
-const tagDictionary = yaml.parse(fs.readFileSync(tagDictionaryPath).toString());
+const tagDictionary: Tag[] = yaml.parse(
+  fs.readFileSync(tagDictionaryPath).toString()
+);
 
 type GulpCallback = (error?: any) => void;
+
+function validateTagHierarchy(cb: GulpCallback) {
+  let errors: string[] = [];
+  const tagNames = pluck("name", tagDictionary);
+  for (let tag of tagDictionary) {
+    for (let parent of tag.parents || []) {
+      if (!tagNames.includes(parent)) {
+        errors.push(`${tag.name} mentions unknown parent ${parent}`);
+      }
+    }
+  }
+  cb(errors.join("\n"));
+}
 
 async function scrapeUrl() {
   const options: Record<any, any> = await prompt({
@@ -18,20 +40,26 @@ async function scrapeUrl() {
     message: "URL to include?",
     initial: "https://ogp.me",
   });
-  const { result } = await ogs(options);
+  let defaults: any = {};
+  try {
+    const { result } = await ogs(options);
+    defaults = { ...result };
+  } catch (e) {
+    console.error("Unable to read OG results");
+  }
   const choices = pluck("name", tagDictionary);
   let frontmatter: Record<string, any> = await prompt([
     {
       type: "input",
       name: "title",
       message: "Title",
-      initial: result.ogTitle,
+      initial: defaults.ogTitle,
     },
     {
       type: "input",
       name: "imageUrl",
       message: "Image URL",
-      initial: pathOr("", ["ogImage", 0, "url"], result),
+      initial: pathOr("", ["ogImage", 0, "url"], defaults),
     },
     {
       type: "autocomplete",
@@ -54,16 +82,12 @@ async function scrapeUrl() {
   );
 
   const contents = `---\n${yaml.stringify(frontmatter)}---\n\n${
-    result.ogDescription || "No description"
+    defaults.ogDescription || "No description"
   }\n`;
 
   fs.writeFileSync(`${filename}.md`, contents);
   // TODO: cache image
 }
 
-function defaultTask(cb: GulpCallback) {
-  console.log("hello world");
-  cb();
-}
-
 exports.default = scrapeUrl;
+exports.validateTagHierarchy = validateTagHierarchy;
