@@ -1,0 +1,11 @@
+# This file contains a flat array of tags.
+#
+# Tags have the following properties:
+#   - name: the human-readable name for the tag, e.g. "Project Management"
+#   - desc: text describing what the tag is about
+#   - parents: an array of parent tags, by their name
+#   - img: an optional URL or local path associated with this tag
+#
+# Tag parents are validated to exist. Individual entries' tags must appear in this file.
+- name: Project Management
+  desc: Organizing and running creative projects

@@ -1,0 +1,27 @@
+- name: Post Haste
+  url: https://www.digitalrebellion.com/posthaste/
+  description: >
+    Post Haste is a free project management tool that allows you to setup file and folder templates for your projects. Create a new project and everything's organized, ready for you to start.
+
+    It's suitable for photographers, video professionals, audio professionals, graphic designers, web designers and anyone who needs to keep their projects and assets organized.
+  tags:
+    - Project Management
+- name: How Sausage (the TTRPG) is made.
+  url: https://twitter.com/RTalsorianGames/status/1416390896166309892?s=20
+  description: Curious about how a TTRPG company tackles the process of creating a TTRPG book?
+  tags:
+    - Project Management
+- name: How to Gather References — A Guide for Clients
+  url: https://docs.google.com/document/d/1jE9ORSQ5pw_jln0J12ZJLX_ql9FF1hEqAmdCmySRvqE/edit#heading=h.husaqmomn1r6
+  description: >
+    If you don’t know where to find visual references for a commission,
+    especially if you don’t have art of your character yet, 
+    I’ve written this guide to give you eight ideas for how to get started!
+  tags:
+    - Project Management
+- name: The Cost of Making a TTRPG Megathread
+  url: https://threadreaderapp.com/thread/1426632238804869122.html
+  description: >
+    I had to make this thread because randos keep jumping on my mentions to defend some 6 figure-making companies while making absolutely BASELESS claims about how much games cost. So saddle up.
+  tags:
+    - Project Management
