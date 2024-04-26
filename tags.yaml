@@ -10,6 +10,7 @@
 - name: Costumes and Props
   parents:
     - Talent and Crew
+- name: Preproduction
 - name: Project Management
   desc: Organizing and running creative projects
 - name: Talent and Crew
