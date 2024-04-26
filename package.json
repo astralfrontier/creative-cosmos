@@ -1,0 +1,20 @@
+{
+  "name": "creative-cosmos",
+  "version": "1.0.0",
+  "description": "A catalog of interesting websites for creative expression",
+  "main": "index.js",
+  "scripts": {
+    "start": "gulp",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "gulp": "^5.0.0",
+    "gulp-cli": "^3.0.0",
+    "gulp-typescript": "^6.0.0-alpha.1",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.4.5"
+  }
+}
