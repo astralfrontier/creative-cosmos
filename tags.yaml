@@ -7,5 +7,11 @@
 #   - img: an optional URL or local path associated with this tag
 #
 # Tag parents are validated to exist. Individual entries' tags must appear in this file.
+- name: Costumes and Props
+  parents:
+    - Talent and Crew
 - name: Project Management
   desc: Organizing and running creative projects
+- name: Talent and Crew
+- name: YouTube
+  desc: Interesting YouTube channels
