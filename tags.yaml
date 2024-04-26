@@ -7,6 +7,9 @@
 #   - img: an optional URL or local path associated with this tag
 #
 # Tag parents are validated to exist. Individual entries' tags must appear in this file.
+- name: 3D Animation
+  notes: Needs a parent
+- name: Blender
 - name: Costumes and Props
   parents:
     - Talent and Crew
@@ -15,7 +18,7 @@
 - name: Project Management
   desc: Organizing and running creative projects
 - name: Sensitivity
-  desc: A placeholder tag for a complex collection of topics, from accessibility to disability
+  notes: A placeholder tag for a complex collection of topics, from accessibility to disability
 - name: Talent and Crew
 - name: Typography
 - name: YouTube
