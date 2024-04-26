@@ -12,7 +12,7 @@ const tagDictionary = yaml.parse(fs.readFileSync(tagDictionaryPath).toString());
 type GulpCallback = (error?: any) => void;
 
 async function scrapeUrl() {
-  const options = await prompt({
+  const options: Record<any, any> = await prompt({
     type: "input",
     name: "url",
     message: "URL to include?",
@@ -20,7 +20,7 @@ async function scrapeUrl() {
   });
   const { result } = await ogs(options);
   const choices = pluck("name", tagDictionary);
-  const frontmatter: Record<string, any> = await prompt([
+  let frontmatter: Record<string, any> = await prompt([
     {
       type: "input",
       name: "title",
@@ -41,6 +41,7 @@ async function scrapeUrl() {
       multiple: true,
     },
   ]);
+  frontmatter["url"] = options["url"];
 
   const filename = path.join(
     __dirname,
