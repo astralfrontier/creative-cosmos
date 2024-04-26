@@ -14,6 +14,8 @@
 - name: Preproduction
 - name: Project Management
   desc: Organizing and running creative projects
+- name: Sensitivity
+  desc: A placeholder tag for a complex collection of topics, from accessibility to disability
 - name: Talent and Crew
 - name: Typography
 - name: YouTube
