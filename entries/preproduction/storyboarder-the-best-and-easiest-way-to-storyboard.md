@@ -1,6 +1,6 @@
 ---
 title: Storyboarder - The best and easiest way to storyboard.
-imageUrl: https://wonderunit.com/storyboarder/screenshot.gif
+#imageUrl: https://wonderunit.com/storyboarder/screenshot.gif
 tags:
   - Preproduction
 url: https://wonderunit.com/storyboarder/

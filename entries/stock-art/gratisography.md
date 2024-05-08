@@ -1,7 +1,7 @@
 ---
 title: Gratisography
 url: https://gratisography.com/
-imageUrl: https://gratisography.com/wp-content/uploads/2018/05/gratis-social-free-stock-photo.jpg
+#imageUrl: https://gratisography.com/wp-content/uploads/2018/05/gratis-social-free-stock-photo.jpg
 tags:
   - Stock Art
 ---

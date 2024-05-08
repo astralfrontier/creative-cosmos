@@ -1,6 +1,6 @@
 ---
 title: The Cultural Appropriation Primer by K. Tempest Bradford
-imageUrl: https://i0.wp.com/writingtheother.com/wp-content/uploads/2018/08/CAheader.png?fit=752%2C440&ssl=1
+#imageUrl: https://i0.wp.com/writingtheother.com/wp-content/uploads/2018/08/CAheader.png?fit=752%2C440&ssl=1
 tags:
   - Sensitivity
 url: http://writingtheother.com/cultural-appropriation-primer/

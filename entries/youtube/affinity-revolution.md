@@ -1,6 +1,6 @@
 ---
 title: Affinity Revolution
-imageUrl: https://yt3.googleusercontent.com/dr9pwKruq9_Sqfxh-MjrgP7ag-Qk490f7VcMYp7JECdoODt0EeSvKaQo1BVgeuWWi6Bd8hE8S3c=s900-c-k-c0x00ffffff-no-rj
+#imageUrl: https://yt3.googleusercontent.com/dr9pwKruq9_Sqfxh-MjrgP7ag-Qk490f7VcMYp7JECdoODt0EeSvKaQo1BVgeuWWi6Bd8hE8S3c=s900-c-k-c0x00ffffff-no-rj
 tags:
   - YouTube
 url: https://www.youtube.com/c/AffinityRevolution

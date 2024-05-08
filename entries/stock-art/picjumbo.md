@@ -1,7 +1,7 @@
 ---
 title: Picjumbo
 url: https://picjumbo.com/
-imageUrl: https://picjumbo.com/wp-content/uploads/elephantastic-visuals-picjumbo-free-photo.jpg
+#imageUrl: https://picjumbo.com/wp-content/uploads/elephantastic-visuals-picjumbo-free-photo.jpg
 tags:
   - Stock Art
 ---

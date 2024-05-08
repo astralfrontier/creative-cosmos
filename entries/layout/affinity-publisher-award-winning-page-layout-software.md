@@ -1,6 +1,6 @@
 ---
 title: Affinity Publisher – award-winning page layout software
-imageUrl: https://cdn.serif.com/affinity/img/publisher/og-publisher-080820220738.png
+#imageUrl: https://cdn.serif.com/affinity/img/publisher/og-publisher-080820220738.png
 tags:
   - Layout
 url: https://affinity.serif.com/en-us/publisher/

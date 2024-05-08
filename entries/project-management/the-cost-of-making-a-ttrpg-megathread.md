@@ -1,6 +1,6 @@
 ---
 title: The Cost of Making a TTRPG Megathread
-imageUrl: https://threadreaderapp.com/images/screenshots/thread/1426632238804869122.jpg
+#imageUrl: https://threadreaderapp.com/images/screenshots/thread/1426632238804869122.jpg
 tags:
   - Project Management
 url: https://threadreaderapp.com/thread/1426632238804869122.html
