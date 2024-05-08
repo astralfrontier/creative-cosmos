@@ -1,7 +1,7 @@
 ---
 title: Public Domain Archive
 url: https://publicdomainarchive.com/
-imageUrl: wp-content/uploads/2014/10/instagram_dark.png
+imageUrl: https://publicdomainarchive.com/wp-content/uploads/2014/10/instagram_dark.png
 tags:
   - Stock Art
 ---
