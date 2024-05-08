@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "gulp",
+    "cache-images": "gulp cacheImages",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -13,7 +14,10 @@
   "devDependencies": {
     "@types/ramda": "^0.29.12",
     "enquirer": "^2.4.1",
+    "file-type-checker": "^1.0.9",
+    "filehound": "^1.17.6",
     "front-matter": "^4.0.2",
+    "gray-matter": "^4.0.3",
     "gulp": "^5.0.0",
     "gulp-cli": "^3.0.0",
     "gulp-typescript": "^6.0.0-alpha.1",

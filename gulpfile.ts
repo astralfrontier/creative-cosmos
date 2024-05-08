@@ -1,10 +1,13 @@
-import fs from "node:fs";
-import path from "node:path";
+import * as fs from "fs";
+import * as path from "path";
 import ogs from "open-graph-scraper";
 import { prompt } from "enquirer";
-import yaml from "yaml";
-import { assoc, pathOr, pluck, reduce } from "ramda";
+import * as yaml from "yaml";
+import { pathOr, pluck } from "ramda";
 import slugify from "slugify";
+import * as FileHound from "filehound";
+import * as matter from "gray-matter";
+import * as fileTypeChecker from "file-type-checker";
 
 interface Tag {
   name: string;
@@ -111,15 +114,43 @@ async function scrapeUrl() {
     })
   );
 
+  // TODO: infer path from tags list
+
   const contents = `---\n${yaml.stringify(frontmatter)}---\n\n${
     defaults.ogDescription || "No description"
   }\n`;
 
-  // TODO: ensure path exists
-
   fs.writeFileSync(`${filename}.md`, contents);
-  // TODO: cache image
+}
+
+async function cacheImage(file: string) {
+  const data = matter(fs.readFileSync(file).toString());
+  if (data.data && data.data.imageUrl) {
+    console.log(`Fetching ${data.data.imageUrl}`);
+    const response = await fetch(data.data.imageUrl);
+    const buffer = Buffer.from(await response.arrayBuffer());
+    const { extension } = await fileTypeChecker.detectFile(buffer);
+    const imagePath = path.format({
+      ...path.parse(file),
+      base: `${path.basename(file, path.extname(file))}.${extension}`,
+    });
+    fs.writeFileSync(imagePath, buffer);
+    console.log(`Wrote ${imagePath}`);
+  } else {
+    console.log(`No imageUrl for ${file}`);
+  }
+}
+
+async function cacheImages() {
+  const files: string[] = await FileHound.create()
+    .paths("entries")
+    .ext("md")
+    .find();
+  for (let file of files) {
+    await cacheImage(file);
+  }
 }
 
 exports.default = scrapeUrl;
+exports.cacheImages = cacheImages;
 exports.validateTagHierarchy = validateTagHierarchy;
