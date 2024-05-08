@@ -13,6 +13,17 @@ interface Tag {
   img?: string;
 }
 
+interface EntryOptions {
+  url: string;
+}
+
+interface EntryAnswers {
+  title: string;
+  imageUrl: string;
+  tags: string[];
+  path: string;
+}
+
 const tagDictionaryPath = path.join(__dirname, "tags.yaml");
 const tagDictionary: Tag[] = yaml.parse(
   fs.readFileSync(tagDictionaryPath).toString()
@@ -34,7 +45,13 @@ function validateTagHierarchy(cb: GulpCallback) {
 }
 
 async function scrapeUrl() {
-  const options: Record<any, any> = await prompt({
+  const entriesFolders = fs
+    .readdirSync(path.join(__dirname, "entries"), {
+      withFileTypes: true,
+    })
+    .filter((dirent) => dirent.isDirectory())
+    .map((dirent) => dirent.name);
+  const options: EntryOptions = await prompt({
     type: "input",
     name: "url",
     message: "URL to include?",
@@ -47,8 +64,8 @@ async function scrapeUrl() {
   } catch (e) {
     console.error("Unable to read OG results");
   }
-  const choices = pluck("name", tagDictionary);
-  let frontmatter: Record<string, any> = await prompt([
+  const tags = pluck("name", tagDictionary);
+  let answers: EntryAnswers = await prompt([
     {
       type: "input",
       name: "title",
@@ -65,16 +82,29 @@ async function scrapeUrl() {
       type: "autocomplete",
       name: "tags",
       message: "Tags? (space selects)",
-      choices,
+      choices: tags,
       multiple: true,
     },
+    {
+      type: "autocomplete",
+      name: "path",
+      message: "Path",
+      choices: entriesFolders,
+    },
   ]);
-  frontmatter["url"] = options["url"];
+
+  const frontmatter = {
+    title: answers["title"],
+    url: options["url"],
+    imageUrl: answers["imageUrl"],
+    tags: answers["tags"],
+  };
 
   const filename = path.join(
     __dirname,
     "entries",
-    slugify(frontmatter["title"] as string, {
+    answers["path"],
+    slugify(answers["title"] as string, {
       lower: true, // convert to lower case, defaults to `false`
       strict: true, // strip special characters except replacement, defaults to `false`
       trim: true, // trim leading and trailing replacement chars, defaults to `true`
@@ -84,6 +114,8 @@ async function scrapeUrl() {
   const contents = `---\n${yaml.stringify(frontmatter)}---\n\n${
     defaults.ogDescription || "No description"
   }\n`;
+
+  // TODO: ensure path exists
 
   fs.writeFileSync(`${filename}.md`, contents);
   // TODO: cache image
